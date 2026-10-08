@@ -25,7 +25,7 @@ interface GoodsBrief {
 Component({
   behaviors: [navLayout],
   data: {
-    /** 左侧八个分类。 */
+    /** 左侧分类，条目超出一屏后可滚动。 */
     categories,
     /** 当前选中的分类 id，默认时令蔬菜。 */
     currentId: categoryMenus[0].id,

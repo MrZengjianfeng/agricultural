@@ -6,7 +6,7 @@
   show-scrollbar="{{false}}"
   scroll-into-view="cate-{{currentId}}"
 >
-  <!-- 内层至少撑满一屏，条目用 flex 均分，视觉上从搜索框铺到导航栏 -->
+  <!-- 条目固定高度，超出一屏时由外层 scroll-view 上下滚动 -->
   <view class="list">
     <view
       id="cate-{{item.id}}"

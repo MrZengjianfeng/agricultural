@@ -1,6 +1,7 @@
 /**
  * 分类页的菜单和商品。
- * 左侧八个分类与首页八宫格同名，方便从首页点进来后直接定位。
+ * 前八项与首页八宫格同名，方便从首页点进来后直接定位。
+ * 后面的分类让左侧列表超出一屏，可以上下滚动。
  * 价格用字符串，是为了保留设计稿里的小数位，例如 4.9。
  */
 
@@ -41,7 +42,8 @@ export interface CategoryMenu {
 /**
  * 分类菜单。
  * 第一项「时令蔬菜」是设计稿的默认选中态，叶菜类五件商品的文案和顺序与稿一致。
- * 其余分类用于切换左侧菜单，商品图复用首页已有素材。
+ * 前八项对应首页八宫格；其后为补充分类，条目固定高度后会超出屏幕。
+ * 商品图复用包内已有素材。
  */
 export const categoryMenus: CategoryMenu[] = [
   {
@@ -233,6 +235,224 @@ export const categoryMenus: CategoryMenu[] = [
             spec: '1盒 · 当季组合',
             price: '128',
             image: '/assets/home/goods-box.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'root',
+    name: '根茎薯类',
+    groups: [
+      {
+        id: 'root-veg',
+        name: '根茎',
+        goods: [
+          {
+            id: 'carrot',
+            name: '水果胡萝卜',
+            spec: '500g · 山东·潍坊',
+            price: '5.8',
+            image: '/assets/category/cabbage.jpg',
+          },
+          {
+            id: 'potato',
+            name: '黄心土豆',
+            spec: '1kg · 今日直发',
+            price: '6.5',
+            image: '/assets/home/goods-corn.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'gourd',
+    name: '瓜果豆类',
+    groups: [
+      {
+        id: 'gourd-fresh',
+        name: '瓜豆',
+        goods: [
+          {
+            id: 'cucumber',
+            name: '水果黄瓜',
+            spec: '500g · 当季',
+            price: '7.9',
+            image: '/assets/category/qing.jpg',
+          },
+          {
+            id: 'bean',
+            name: '四季豆',
+            spec: '400g · 清脆',
+            price: '8.5',
+            image: '/assets/category/youmai.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'mushroom',
+    name: '鲜菌菇类',
+    groups: [
+      {
+        id: 'mushroom-fresh',
+        name: '鲜菌',
+        goods: [
+          {
+            id: 'shiitake',
+            name: '鲜香菇',
+            spec: '250g · 福建·古田',
+            price: '12.8',
+            image: '/assets/home/cat-dry.jpg',
+          },
+          {
+            id: 'enoki',
+            name: '金针菇',
+            spec: '200g · 今日直发',
+            price: '4.9',
+            image: '/assets/category/lettuce.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'seafood',
+    name: '水产海鲜',
+    groups: [
+      {
+        id: 'seafood-fresh',
+        name: '鲜活水产',
+        goods: [
+          {
+            id: 'bass',
+            name: '鲜活鲈鱼',
+            spec: '约1.2斤 · 冷链',
+            price: '32.0',
+            image: '/assets/home/cat-meat.jpg',
+          },
+          {
+            id: 'shrimp',
+            name: '基围虾',
+            spec: '500g · 当日到港',
+            price: '46.0',
+            image: '/assets/home/goods-strawberry.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'pickle',
+    name: '酱菜调味',
+    groups: [
+      {
+        id: 'pickle-home',
+        name: '酱菜',
+        goods: [
+          {
+            id: 'pickle-veg',
+            name: '农家腌菜',
+            spec: '300g · 手工腌制',
+            price: '9.9',
+            image: '/assets/category/spinach.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'tea',
+    name: '茶叶花茶',
+    groups: [
+      {
+        id: 'tea-leaf',
+        name: '茶叶',
+        goods: [
+          {
+            id: 'longjing',
+            name: '明前龙井',
+            spec: '50g · 浙江·杭州',
+            price: '88.0',
+            image: '/assets/category/youmai.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'honey',
+    name: '蜂蜜制品',
+    groups: [
+      {
+        id: 'honey-raw',
+        name: '蜂蜜',
+        goods: [
+          {
+            id: 'honey-jar',
+            name: '山花蜂蜜',
+            spec: '500g · 农家自产',
+            price: '58.0',
+            image: '/assets/home/goods-box.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'nut',
+    name: '坚果炒货',
+    groups: [
+      {
+        id: 'nut-snack',
+        name: '坚果',
+        goods: [
+          {
+            id: 'walnut',
+            name: '纸皮核桃',
+            spec: '500g · 新疆',
+            price: '36.8',
+            image: '/assets/home/goods-rice.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'organic',
+    name: '有机专区',
+    groups: [
+      {
+        id: 'organic-veg',
+        name: '有机',
+        goods: [
+          {
+            id: 'organic-tomato',
+            name: '有机番茄',
+            spec: '500g · 无农药',
+            price: '15.8',
+            image: '/assets/home/goods-tomato.jpg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'local',
+    name: '地方特产',
+    groups: [
+      {
+        id: 'local-snack',
+        name: '特产',
+        goods: [
+          {
+            id: 'sausage',
+            name: '农家腊肠',
+            spec: '300g · 四川',
+            price: '42.0',
+            image: '/assets/home/cat-meat.jpg',
           },
         ],
       },
