@@ -1,0 +1,20 @@
+<!-- 分类商品行：左图，右侧名称、规格、价格和加号 -->
+<view class="card" bindtap="onTap" hover-class="pressed">
+  <!-- 正方形商品图，圆角裁切，缺图时露出米色底 -->
+  <image class="photo" src="{{item.image}}" mode="aspectFill" lazy-load />
+  <view class="info">
+    <!-- 名称和规格靠上，规格用灰色小字 -->
+    <view class="text">
+      <text class="name">{{item.name}}</text>
+      <text class="spec">{{item.spec}}</text>
+    </view>
+    <!-- 价格贴底，加号单独响应，不冒泡到整张卡片 -->
+    <view class="foot">
+      <view class="price">
+        <text class="yen">¥</text>
+        <text class="num">{{item.price}}</text>
+      </view>
+      <view class="plus" catchtap="onAdd">+</view>
+    </view>
+  </view>
+</view>

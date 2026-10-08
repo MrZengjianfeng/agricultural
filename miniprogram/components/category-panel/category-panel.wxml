@@ -1,0 +1,28 @@
+<!-- 右侧商品区。anchor 由页面在切换分类时更新，用来把列表滚回第一个分组 -->
+<scroll-view
+  class="scroller"
+  scroll-y
+  enhanced
+  show-scrollbar="{{false}}"
+  scroll-into-view="{{anchor}}"
+>
+  <block wx:if="{{groups.length}}">
+    <view class="group" wx:for="{{groups}}" wx:for-item="group" wx:key="id" id="group-{{group.id}}">
+      <!-- 分组标题，例如「叶菜类」，不带首页那种绿色竖条 -->
+      <text class="title">{{group.name}}</text>
+      <!-- 分组下的商品行，点击和加购分别向上抛 -->
+      <category-sku
+        wx:for="{{group.goods}}"
+        wx:for-item="goods"
+        wx:key="id"
+        item="{{goods}}"
+        bind:select="onSelect"
+        bind:add="onAdd"
+      />
+    </view>
+    <!-- 底部留白，最后一张卡片和导航之间留出缝 -->
+    <view class="bottom-space"></view>
+  </block>
+  <!-- 搜索过滤后没有商品时的空态 -->
+  <view wx:else class="empty">没有找到相关商品</view>
+</scroll-view>

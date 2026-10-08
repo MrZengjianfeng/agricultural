@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "tab-page": "/components/tab-page/tab-page"
+    "search-bar": "/components/search-bar/search-bar",
+    "category-sidebar": "/components/category-sidebar/category-sidebar",
+    "category-panel": "/components/category-panel/category-panel",
+    "app-tab-bar": "/components/app-tab-bar/app-tab-bar"
   },
   "navigationStyle": "custom",
   "disableScroll": true,

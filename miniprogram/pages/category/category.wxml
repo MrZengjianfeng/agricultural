@@ -1,2 +1,30 @@
-<!-- 分类页：标题、说明和底部导航由 tab-page 提供，hint 可被入口分类名替换 -->
-<tab-page title="分类" current="category" hint="{{hint}}" />
+<!-- 分类页：顶栏和搜索固定，中间左右分栏各自滚动，底部导航固定 -->
+<view class="page">
+  <!-- 自定义顶栏，只放居中标题「分类」，高度避开状态栏 -->
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="title" style="height: {{navBarHeight}}px;">分类</view>
+  </view>
+  <!-- 搜索框：可搜左侧分类名，也可搜商品名和规格 -->
+  <search-bar placeholder="搜索分类或商品" bind:search="onSearch" />
+  <view class="main">
+    <!-- 左侧分类。style 写在组件上，是为了让宿主节点撑满这一列的高度 -->
+    <category-sidebar
+      class="side"
+      style="height: 100%; display: block;"
+      categories="{{categories}}"
+      current-id="{{currentId}}"
+      bind:change="onCategoryChange"
+    />
+    <!-- 右侧分组商品，选中分类或搜索结果都从这里展示 -->
+    <category-panel
+      class="panel"
+      style="height: 100%; display: block;"
+      groups="{{groups}}"
+      anchor="{{anchor}}"
+      bind:select="onGoods"
+      bind:add="onAdd"
+    />
+  </view>
+  <!-- 底部导航，当前页为分类，角标显示购物车件数 -->
+  <app-tab-bar current="category" cart-count="{{cartCount}}" />
+</view>

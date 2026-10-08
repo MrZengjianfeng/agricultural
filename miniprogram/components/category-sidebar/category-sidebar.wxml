@@ -1,0 +1,25 @@
+<!-- 左侧分类菜单。scroll-into-view 保证从首页点进靠后的分类时，选中项滚进可视区 -->
+<scroll-view
+  class="scroller"
+  scroll-y
+  enhanced
+  show-scrollbar="{{false}}"
+  scroll-into-view="cate-{{currentId}}"
+>
+  <!-- 内层至少撑满一屏，条目用 flex 均分，视觉上从搜索框铺到导航栏 -->
+  <view class="list">
+    <view
+      id="cate-{{item.id}}"
+      class="item {{currentId === item.id ? 'active' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onTap"
+      hover-class="pressed"
+    >
+      <!-- 只有选中项显示左缘绿条，未选中项文字仍与选中文字左对齐 -->
+      <view wx:if="{{currentId === item.id}}" class="bar"></view>
+      <text class="name">{{item.name}}</text>
+    </view>
+  </view>
+</scroll-view>
