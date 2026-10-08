@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "login-brand": "/components/login-brand/login-brand",
+    "login-cover": "/components/login-cover/login-cover",
+    "login-wechat": "/components/login-wechat/login-wechat",
+    "login-phone": "/components/login-phone/login-phone",
+    "login-agreement": "/components/login-agreement/login-agreement"
+  },
+  "navigationStyle": "custom",
+  "backgroundColor": "#FDF9EE",
+  "backgroundColorTop": "#FDF9EE",
+  "backgroundColorBottom": "#FDF9EE"
+}

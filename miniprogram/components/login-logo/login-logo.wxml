@@ -1,0 +1,2 @@
+<!-- 圆形田标。尺寸由组件自己定，父级只负责把它水平居中 -->
+<image class="logo" src="{{src}}" mode="aspectFit" />

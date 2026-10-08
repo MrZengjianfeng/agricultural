@@ -1,0 +1,41 @@
+@import '../../styles/theme.less';
+
+.btn {
+  margin: 40rpx 48rpx 0;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: @login-green;
+  box-shadow: 0 10rpx 24rpx rgba(99, 144, 95, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pressed {
+  opacity: 0.88;
+}
+
+/* 蒙版只留气泡形状，底色用白色，圆点位置被挖空 */
+.wx {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 14rpx;
+  flex: none;
+  background: #ffffff;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27black%27%20fill-rule%3D%27evenodd%27%20d%3D%27M9.5%203.2C6.2%203.2%203.5%205.5%203.5%208.4c0%201.6.8%203%202.1%204l-.5%202.2%202.2-1.1c.7.2%201.4.3%202.2.3%203.3%200%206-2.3%206-5.2S12.8%203.2%209.5%203.2zM7.6%207.2a.9.9%200%201%201%200%201.8.9.9%200%200%201%200-1.8zM11.4%207.2a.9.9%200%201%201%200%201.8.9.9%200%200%201%200-1.8z%27%2F%3E%3Cpath%20fill%3D%27black%27%20fill-rule%3D%27evenodd%27%20d%3D%27M16.4%209.5c-2.6%200-4.7%201.8-4.7%204%200%202.2%201.9%204%204.4%204%20.5%200%201%200%201.4-.2l1.6.8-.4-1.4c.9-.7%201.5-1.6%201.5-2.7%200-2.2-2.1-4.5-4.8-4.5zM14.8%2012.6a.7.7%200%201%201%200%201.4.7.7%200%200%201%200-1.4zM17.6%2012.6a.7.7%200%201%201%200%201.4.7.7%200%200%201%200-1.4z%27%2F%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27black%27%20fill-rule%3D%27evenodd%27%20d%3D%27M9.5%203.2C6.2%203.2%203.5%205.5%203.5%208.4c0%201.6.8%203%202.1%204l-.5%202.2%202.2-1.1c.7.2%201.4.3%202.2.3%203.3%200%206-2.3%206-5.2S12.8%203.2%209.5%203.2zM7.6%207.2a.9.9%200%201%201%200%201.8.9.9%200%200%201%200-1.8zM11.4%207.2a.9.9%200%201%201%200%201.8.9.9%200%200%201%200-1.8z%27%2F%3E%3Cpath%20fill%3D%27black%27%20fill-rule%3D%27evenodd%27%20d%3D%27M16.4%209.5c-2.6%200-4.7%201.8-4.7%204%200%202.2%201.9%204%204.4%204%20.5%200%201%200%201.4-.2l1.6.8-.4-1.4c.9-.7%201.5-1.6%201.5-2.7%200-2.2-2.1-4.5-4.8-4.5zM14.8%2012.6a.7.7%200%201%201%200%201.4.7.7%200%200%201%200-1.4zM17.6%2012.6a.7.7%200%201%201%200%201.4.7.7%200%200%201%200-1.4z%27%2F%3E%3C%2Fsvg%3E");
+}
+
+.label {
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 2rpx;
+}

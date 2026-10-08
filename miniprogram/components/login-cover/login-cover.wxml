@@ -1,0 +1,4 @@
+<!-- 田地封面：白边圆角卡片，里面是日出菜地 -->
+<view class="frame">
+  <image class="photo" src="{{src}}" mode="aspectFill" />
+</view>

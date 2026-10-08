@@ -1,0 +1,26 @@
+<!-- 登录页：内容从胶囊下开始，协议区被弹性空白推到屏幕底部 -->
+<view class="page" style="padding-top: {{statusBarHeight}}px;">
+  <!-- 占位行，高度与微信胶囊对齐，避免田标顶到状态栏 -->
+  <view class="nav" style="height: {{navBarHeight}}px;"></view>
+  <!-- 田标、店名、口号 -->
+  <login-brand name="{{brand.name}}" slogan="{{brand.slogan}}" logo="{{images.logo}}" />
+  <!-- 日出菜地封面 -->
+  <login-cover src="{{images.field}}" />
+  <!-- 微信一键登录 -->
+  <login-wechat label="{{action.wechat}}" bind:login="onWechat" />
+  <!-- 手机号登录 -->
+  <login-phone label="{{action.phone}}" bind:login="onPhone" />
+  <!-- 弹性空白。屏幕高时把协议区留在底部，矮屏时仍能跟着页面滚动 -->
+  <view class="spacer"></view>
+  <!-- 协议勾选、两份文档和授权说明 -->
+  <login-agreement
+    checked="{{agreed}}"
+    lead="{{agreement.lead}}"
+    agreement="{{agreement.agreement}}"
+    join="{{agreement.join}}"
+    privacy="{{agreement.privacy}}"
+    hint="{{agreement.hint}}"
+    bind:toggle="onToggleAgree"
+    bind:open="onOpenDoc"
+  />
+</view>

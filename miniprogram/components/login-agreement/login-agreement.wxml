@@ -1,0 +1,24 @@
+<!-- 协议区：勾选行在上，授权说明在下。书名号单独点，不带动勾选 -->
+<view class="wrap">
+  <view class="row">
+    <!-- 空心圆。勾上后变成灰绿底白勾，点击只抛 toggle -->
+    <view
+      class="check {{checked ? 'on' : ''}}"
+      catchtap="onToggle"
+      hover-class="pressed"
+      aria-role="checkbox"
+      aria-checked="{{checked}}"
+      aria-label="{{checked ? '取消同意协议' : '同意协议'}}"
+    >
+      <view wx:if="{{checked}}" class="tick"></view>
+    </view>
+    <!-- 一行协议。普通文字跟着圆点勾选，两个书名号分别打开文档 -->
+    <view class="sentence">
+      <text class="plain" catchtap="onToggle">{{lead}}</text>
+      <text class="link" catchtap="onOpen" data-key="agreement">{{agreement}}</text>
+      <text class="plain">{{join}}</text>
+      <text class="link" catchtap="onOpen" data-key="privacy">{{privacy}}</text>
+    </view>
+  </view>
+  <text class="hint">{{hint}}</text>
+</view>

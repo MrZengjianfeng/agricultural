@@ -1,0 +1,7 @@
+<!-- 品牌区：田标、店名、口号，整列居中 -->
+<view class="brand">
+  <!-- 圆形田标，尺寸在田标组件里 -->
+  <login-logo src="{{logo}}" />
+  <text class="name">{{name}}</text>
+  <text class="slogan">{{slogan}}</text>
+</view>

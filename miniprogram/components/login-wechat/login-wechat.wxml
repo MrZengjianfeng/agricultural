@@ -1,0 +1,6 @@
+<!-- 微信一键登录。左边是白色微信标，右边是文案，点击交给页面 -->
+<view class="btn" bindtap="onTap" hover-class="pressed" hover-stay-time="80">
+  <!-- 微信标用蒙版画出两只气泡，圆点透出按钮的灰绿色 -->
+  <view class="wx" aria-hidden="true"></view>
+  <text class="label">{{label}}</text>
+</view>

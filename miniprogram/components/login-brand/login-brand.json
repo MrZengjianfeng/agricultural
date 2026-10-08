@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "login-logo": "/components/login-logo/login-logo"
+  }
+}
