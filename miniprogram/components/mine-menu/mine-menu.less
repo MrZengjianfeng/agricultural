@@ -1,0 +1,54 @@
+@import '../../styles/theme.less';
+@import '../../styles/icons.less';
+
+:host {
+  display: block;
+}
+
+.card {
+  .mine-card();
+  margin: 0 32rpx 12rpx;
+  padding: 8rpx 0;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 104rpx;
+  padding: 0 28rpx;
+}
+
+.mark {
+  width: 40rpx;
+  height: 40rpx;
+  background: @green;
+}
+
+.label {
+  flex: 1;
+  min-width: 0;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  line-height: 1.2;
+  color: #222222;
+}
+
+.chevron {
+  width: 28rpx;
+  height: 28rpx;
+  background: #C8C8C8;
+}
+
+.line {
+  position: absolute;
+  left: 28rpx;
+  right: 28rpx;
+  bottom: 0;
+  height: 1px;
+  background: #F0EEE8;
+}
+
+.pressed {
+  opacity: 0.6;
+}

@@ -1,0 +1,18 @@
+<!-- 菜单卡片。分割线不画在最后一行，避免贴住圆角 -->
+<view class="card">
+  <!-- 一行：图标、标题、箭头。点击整行抛出 select -->
+  <view
+    class="row"
+    wx:for="{{items}}"
+    wx:key="key"
+    hover-class="pressed"
+    data-key="{{item.key}}"
+    data-label="{{item.label}}"
+    bindtap="onTap"
+  >
+    <view class="mark icon icon-{{item.icon}}"></view>
+    <text class="label">{{item.label}}</text>
+    <view class="chevron icon icon-chevron"></view>
+    <view wx:if="{{index < items.length - 1}}" class="line"></view>
+  </view>
+</view>

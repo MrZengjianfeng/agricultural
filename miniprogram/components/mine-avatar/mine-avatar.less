@@ -1,0 +1,202 @@
+/* 宿主固定成头像大小，避免在资料行里被拉成整行 */
+:host {
+  display: block;
+  flex: none;
+  width: 136rpx;
+  height: 136rpx;
+}
+
+.avatar {
+  position: relative;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #F6E6C4;
+}
+
+.shirt {
+  position: absolute;
+  z-index: 1;
+  left: 18rpx;
+  right: 18rpx;
+  bottom: 0;
+  height: 52rpx;
+  background: #2F8A46;
+  border-radius: 40rpx 40rpx 0 0;
+}
+
+.scoop {
+  position: absolute;
+  z-index: 2;
+  left: 52rpx;
+  bottom: 30rpx;
+  width: 32rpx;
+  height: 18rpx;
+  background: #F6C9A4;
+  border-radius: 0 0 18rpx 18rpx;
+}
+
+.ear {
+  position: absolute;
+  z-index: 2;
+  top: 76rpx;
+  width: 16rpx;
+  height: 18rpx;
+  background: #F0BC96;
+  border-radius: 50%;
+}
+
+.ear-left {
+  left: 26rpx;
+}
+
+.ear-right {
+  right: 26rpx;
+}
+
+.face {
+  position: absolute;
+  z-index: 3;
+  left: 36rpx;
+  top: 52rpx;
+  width: 64rpx;
+  height: 62rpx;
+  background: #F8CFAA;
+  border-radius: 50%;
+}
+
+.hair {
+  position: absolute;
+  z-index: 4;
+  top: 64rpx;
+  width: 16rpx;
+  height: 26rpx;
+  background: #3C3028;
+  border-radius: 10rpx;
+}
+
+.hair-left {
+  left: 30rpx;
+}
+
+.hair-right {
+  right: 30rpx;
+}
+
+.blush {
+  position: absolute;
+  z-index: 4;
+  top: 86rpx;
+  width: 12rpx;
+  height: 7rpx;
+  background: #F4B5A4;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.blush-left {
+  left: 44rpx;
+}
+
+.blush-right {
+  right: 44rpx;
+}
+
+.eye {
+  position: absolute;
+  z-index: 5;
+  top: 78rpx;
+  width: 7rpx;
+  height: 8rpx;
+  background: #3A2A22;
+  border-radius: 50%;
+}
+
+.eye-left {
+  left: 52rpx;
+}
+
+.eye-right {
+  left: 78rpx;
+}
+
+.smile {
+  position: absolute;
+  z-index: 5;
+  top: 96rpx;
+  left: 57rpx;
+  width: 22rpx;
+  height: 10rpx;
+  border-bottom: 3rpx solid #E08A74;
+  border-radius: 0 0 14rpx 14rpx;
+}
+
+.crown {
+  position: absolute;
+  z-index: 6;
+  left: 32rpx;
+  top: 8rpx;
+  width: 72rpx;
+  height: 42rpx;
+  background: #E6B34A;
+  border-radius: 36rpx 36rpx 10rpx 10rpx;
+  overflow: hidden;
+}
+
+.straw {
+  position: absolute;
+  left: 10rpx;
+  right: 10rpx;
+  height: 2rpx;
+  background: rgba(168, 104, 24, 0.35);
+}
+
+.straw-1 {
+  top: 16rpx;
+}
+
+.straw-2 {
+  top: 26rpx;
+}
+
+.shine {
+  position: absolute;
+  left: 10rpx;
+  top: 8rpx;
+  width: 20rpx;
+  height: 12rpx;
+  background: rgba(255, 236, 186, 0.55);
+  border-radius: 50%;
+}
+
+.band {
+  position: absolute;
+  z-index: 7;
+  left: 32rpx;
+  top: 38rpx;
+  width: 72rpx;
+  height: 8rpx;
+  background: #C4892A;
+}
+
+.brim {
+  position: absolute;
+  z-index: 8;
+  left: 12rpx;
+  top: 44rpx;
+  width: 112rpx;
+  height: 16rpx;
+  background: #E8BC58;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.brim-shade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5rpx;
+  background: #D09A34;
+}

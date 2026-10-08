@@ -1,0 +1,13 @@
+<!-- 资料区：头像在左，昵称、手机号、会员标在右 -->
+<view class="profile">
+  <!-- 草帽农夫头像，尺寸由头像组件自己定 -->
+  <mine-avatar />
+  <view class="meta">
+    <text class="name">{{name}}</text>
+    <text class="phone">{{phone}}</text>
+    <!-- 会员标是绿色小标签，不是按钮 -->
+    <view class="badge">
+      <text class="badge-text">{{badge}}</text>
+    </view>
+  </view>
+</view>

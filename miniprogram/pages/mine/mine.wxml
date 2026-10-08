@@ -1,2 +1,26 @@
-<!-- 我的页占位，底部导航高亮「我的」 -->
-<tab-page title="我的" current="mine" hint="登录后查看订单、地址和优惠券" />
+<!-- 个人中心：顶栏固定，中间滚动，底部导航固定 -->
+<view class="page">
+  <!-- 自定义顶栏：右侧设置齿轮，位置避开微信胶囊 -->
+  <mine-navbar bind:setting="onSetting" />
+  <scroll-view class="body" scroll-y enhanced show-scrollbar="{{false}}">
+    <!-- 头像、昵称、手机号和田野会员标 -->
+    <mine-profile name="{{profile.name}}" phone="{{profile.phone}}" badge="{{profile.badge}}" />
+    <!-- 优惠券、积分、收藏 -->
+    <mine-stats items="{{stats}}" bind:select="onStat" />
+    <!-- 我的订单。待付款带红色数字，查看全部单独抛出 -->
+    <mine-orders items="{{orders}}" bind:all="onAllOrders" bind:select="onOrder" />
+    <!-- 农场直供会员开通条 -->
+    <mine-member
+      title="{{member.title}}"
+      subtitle="{{member.subtitle}}"
+      action="{{member.action}}"
+      bind:open="onOpenMember"
+    />
+    <!-- 收货地址、我的收藏、联系客服、设置 -->
+    <mine-menu items="{{menus}}" bind:select="onMenu" />
+    <!-- 底部留白，避免最后一行贴住导航 -->
+    <view class="bottom-space"></view>
+  </scroll-view>
+  <!-- 底部导航。当前页是我的，角标是购物车件数 -->
+  <app-tab-bar current="mine" cart-count="{{cartCount}}" />
+</view>

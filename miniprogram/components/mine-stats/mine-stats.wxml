@@ -1,0 +1,17 @@
+<!-- 三项数据。竖线插在相邻两项中间，高度不顶满卡片 -->
+<view class="card">
+  <block wx:for="{{items}}" wx:key="key">
+    <view wx:if="{{index > 0}}" class="split"></view>
+    <!-- 数字在上，说明在下。点击抛出 select -->
+    <view
+      class="item"
+      hover-class="pressed"
+      data-key="{{item.key}}"
+      data-label="{{item.label}}"
+      bindtap="onTap"
+    >
+      <text class="value">{{item.value}}</text>
+      <text class="label">{{item.label}}</text>
+    </view>
+  </block>
+</view>

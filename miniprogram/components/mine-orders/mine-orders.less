@@ -1,0 +1,97 @@
+@import '../../styles/theme.less';
+@import '../../styles/icons.less';
+
+:host {
+  display: block;
+}
+
+.card {
+  .mine-card();
+  margin: 0 32rpx 24rpx;
+  padding-bottom: 8rpx;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 28rpx 8rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #222222;
+}
+
+.more {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  line-height: 1;
+  color: #9A9A9A;
+}
+
+.more .arrow {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 2rpx;
+  background: #B0B0B0;
+}
+
+.grid {
+  display: flex;
+  padding: 16rpx 4rpx 24rpx;
+}
+
+.item {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-wrap {
+  position: relative;
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-wrap .icon {
+  width: 48rpx;
+  height: 48rpx;
+  background: @green;
+}
+
+.label {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  line-height: 1.2;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.badge {
+  position: absolute;
+  top: -6rpx;
+  right: -10rpx;
+  min-width: 28rpx;
+  height: 28rpx;
+  padding: 0 6rpx;
+  border-radius: 14rpx;
+  background: #F44336;
+  color: #ffffff;
+  font-size: 18rpx;
+  line-height: 28rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.pressed {
+  opacity: 0.6;
+}

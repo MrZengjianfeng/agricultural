@@ -1,0 +1,30 @@
+<!-- 订单卡片：标题行加五个状态入口 -->
+<view class="card">
+  <view class="head">
+    <text class="title">{{title}}</text>
+    <!-- 查看全部。箭头和文字一起点，抛出 all -->
+    <view class="more" bindtap="onAll" hover-class="pressed">
+      <text>{{moreText}}</text>
+      <view class="arrow icon icon-chevron"></view>
+    </view>
+  </view>
+  <view class="grid">
+    <!-- 一个状态：线框图标、可选红色角标、底部文字。点击抛出 select -->
+    <view
+      class="item"
+      wx:for="{{items}}"
+      wx:key="key"
+      hover-class="pressed"
+      data-key="{{item.key}}"
+      data-label="{{item.label}}"
+      bindtap="onTap"
+    >
+      <view class="icon-wrap">
+        <view class="icon icon-{{item.icon}}"></view>
+        <!-- 只有待付款这类带数字的入口才显示红点 -->
+        <view wx:if="{{item.badge > 0}}" class="badge">{{item.badge > 99 ? '99+' : item.badge}}</view>
+      </view>
+      <text class="label">{{item.label}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,27 @@
+<!-- 草帽农夫。从下往上叠：衣服、脸、头发，最后压上草帽 -->
+<view class="avatar">
+  <!-- 绿上衣。领口用一块肤色缺口，看起来像圆领 -->
+  <view class="shirt"></view>
+  <view class="scoop"></view>
+  <!-- 脸和两侧耳朵。耳朵在脸后面，只露出外沿 -->
+  <view class="ear ear-left"></view>
+  <view class="ear ear-right"></view>
+  <view class="face"></view>
+  <view class="hair hair-left"></view>
+  <view class="hair hair-right"></view>
+  <view class="blush blush-left"></view>
+  <view class="blush blush-right"></view>
+  <view class="eye eye-left"></view>
+  <view class="eye eye-right"></view>
+  <view class="smile"></view>
+  <!-- 草帽：帽冠、棕色帽带、宽帽檐。帽檐盖住额头 -->
+  <view class="crown">
+    <view class="straw straw-1"></view>
+    <view class="straw straw-2"></view>
+    <view class="shine"></view>
+  </view>
+  <view class="band"></view>
+  <view class="brim">
+    <view class="brim-shade"></view>
+  </view>
+</view>

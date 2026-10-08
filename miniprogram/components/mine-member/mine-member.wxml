@@ -1,0 +1,10 @@
+<!-- 会员开通条：左侧文案，右侧白按钮。点击按钮抛出 open -->
+<view class="banner">
+  <view class="copy">
+    <text class="title">{{title}}</text>
+    <text class="subtitle">{{subtitle}}</text>
+  </view>
+  <view class="btn" bindtap="onOpen" hover-class="pressed">
+    <text class="btn-text">{{action}}</text>
+  </view>
+</view>

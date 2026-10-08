@@ -1,8 +1,16 @@
 {
   "usingComponents": {
-    "tab-page": "/components/tab-page/tab-page"
+    "mine-navbar": "/components/mine-navbar/mine-navbar",
+    "mine-profile": "/components/mine-profile/mine-profile",
+    "mine-stats": "/components/mine-stats/mine-stats",
+    "mine-orders": "/components/mine-orders/mine-orders",
+    "mine-member": "/components/mine-member/mine-member",
+    "mine-menu": "/components/mine-menu/mine-menu",
+    "app-tab-bar": "/components/app-tab-bar/app-tab-bar"
   },
   "navigationStyle": "custom",
   "disableScroll": true,
-  "backgroundColor": "#F7F4EC"
+  "backgroundColor": "#F7F4EC",
+  "backgroundColorTop": "#F7F4EC",
+  "backgroundColorBottom": "#F7F4EC"
 }

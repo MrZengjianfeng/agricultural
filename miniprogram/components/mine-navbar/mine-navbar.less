@@ -1,0 +1,32 @@
+@import '../../styles/theme.less';
+@import '../../styles/icons.less';
+
+.navbar {
+  background: @bg;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+/* 点击区域比图标大一圈，避免点不中 */
+.gear {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-gear {
+  width: 40rpx;
+  height: 40rpx;
+  background: #4A4A4A;
+}
+
+.pressed {
+  opacity: 0.55;
+}

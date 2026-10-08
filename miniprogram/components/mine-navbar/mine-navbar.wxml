@@ -1,0 +1,9 @@
+<!-- 顶栏：padding-top 让出状态栏，padding-right 让出微信胶囊，齿轮贴在胶囊左侧 -->
+<view class="navbar" style="padding-top: {{statusBarHeight}}px;">
+  <view class="row" style="height: {{navBarHeight}}px; padding-right: {{capsuleGap}}px;">
+    <!-- 设置齿轮。点击抛出 setting，由页面处理 -->
+    <view class="gear" bindtap="onSetting" hover-class="pressed">
+      <view class="icon icon-gear"></view>
+    </view>
+  </view>
+</view>
