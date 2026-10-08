@@ -128,14 +128,11 @@ Component({
       });
     },
     /**
-     * 手机号登录。
-     * 设计稿只有这个入口，手机号页面还没做，先要求勾选协议再提示。
+     * 进入手机号登录。
+     * 协议勾选留在手机号那一屏，这里只负责打开页面。
      */
     onPhone() {
-      if (!this.ensureAgreed()) {
-        return;
-      }
-      wx.showToast({ title: "手机号登录", icon: "none" });
+      wx.navigateTo({ url: "/pages/phone-login/phone-login" });
     },
   },
 });

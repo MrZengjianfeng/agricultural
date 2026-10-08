@@ -1,0 +1,18 @@
+<!-- 顶栏：padding-top 让出状态栏。右侧胶囊是微信画的，标题用绝对定位保持屏幕居中 -->
+<view class="navbar" style="padding-top: {{statusBarHeight}}px;">
+  <view class="row" style="height: {{navBarHeight}}px;">
+    <!-- 返回箭头。点击只抛 back，去哪一页由页面决定 -->
+    <view
+      class="back"
+      bindtap="onBack"
+      hover-class="pressed"
+      hover-stay-time="80"
+      aria-role="button"
+      aria-label="返回"
+    >
+      <view class="chevron"></view>
+    </view>
+    <!-- 标题不接收点击，避免挡住左侧返回 -->
+    <view class="title">{{title}}</view>
+  </view>
+</view>

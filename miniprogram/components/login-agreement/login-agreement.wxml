@@ -20,5 +20,6 @@
       <text class="link" catchtap="onOpen" data-key="privacy">{{privacy}}</text>
     </view>
   </view>
-  <text class="hint">{{hint}}</text>
+  <!-- 第二行说明。手机号登录不需要这段，hint 留空就不渲染 -->
+  <text wx:if="{{hint}}" class="hint">{{hint}}</text>
 </view>

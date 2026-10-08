@@ -1,0 +1,4 @@
+<!-- 登录主按钮。和白卡片同宽，点击交给页面 -->
+<view class="btn" bindtap="onTap" hover-class="pressed" hover-stay-time="80">
+  <text class="label">{{label}}</text>
+</view>

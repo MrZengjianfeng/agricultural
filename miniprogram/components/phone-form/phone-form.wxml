@@ -1,0 +1,52 @@
+<!-- 白卡片：上边手机号，下边验证码。两行的竖线靠同一列宽对齐 -->
+<view class="card">
+  <!-- 区号固定，手机号交给输入框 -->
+  <view class="row">
+    <text class="label">{{dial}}</text>
+    <view class="vbar"></view>
+    <!-- 输入框包一层，只占竖线右边的剩余宽度 -->
+    <view class="field-wrap">
+      <input
+        class="field"
+        type="digit"
+        maxlength="11"
+        value="{{phone}}"
+        placeholder="{{phonePlaceholder}}"
+        placeholder-class="ph"
+        placeholder-style="color:#A8A8A8;font-size:32rpx;"
+        bindinput="onPhone"
+        adjust-position="{{true}}"
+      />
+    </view>
+  </view>
+  <!-- 分割线不顶到圆角，左右留出和内容接近的空白 -->
+  <view class="line"></view>
+  <!-- 验证码输入，右侧是获取按钮 -->
+  <view class="row">
+    <text class="label">{{codeLabel}}</text>
+    <view class="vbar"></view>
+    <view class="field-wrap">
+      <input
+        class="field"
+        type="digit"
+        maxlength="4"
+        value="{{code}}"
+        placeholder="{{codePlaceholder}}"
+        placeholder-class="ph"
+        placeholder-style="color:#A8A8A8;font-size:32rpx;"
+        bindinput="onCode"
+        adjust-position="{{true}}"
+      />
+    </view>
+    <!-- 获取验证码。文案由页面传入，倒计时中会变成秒数 -->
+    <view
+      class="send"
+      bindtap="onSend"
+      hover-class="pressed"
+      hover-stay-time="80"
+      aria-role="button"
+    >
+      <text class="send-text">{{sendLabel}}</text>
+    </view>
+  </view>
+</view>

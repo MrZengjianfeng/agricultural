@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "phone-navbar": "/components/phone-navbar/phone-navbar",
+    "phone-brand": "/components/phone-brand/phone-brand",
+    "phone-form": "/components/phone-form/phone-form",
+    "phone-submit": "/components/phone-submit/phone-submit",
+    "phone-back": "/components/phone-back/phone-back",
+    "login-agreement": "/components/login-agreement/login-agreement"
+  },
+  "navigationStyle": "custom",
+  "backgroundColor": "#FDF9EE",
+  "backgroundColorTop": "#FDF9EE",
+  "backgroundColorBottom": "#FDF9EE"
+}

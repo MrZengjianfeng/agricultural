@@ -1,0 +1,7 @@
+<!-- 品牌区：田标、店名、说明，整列居中，直接铺在米色背景上 -->
+<view class="brand">
+  <!-- 圆形田标。尺寸在田标组件里，这里不再缩放 -->
+  <login-logo src="{{logo}}" />
+  <text class="name">{{name}}</text>
+  <text class="slogan">{{slogan}}</text>
+</view>

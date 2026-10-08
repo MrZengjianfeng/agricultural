@@ -1,0 +1,52 @@
+@import '../../styles/theme.less';
+
+.navbar {
+  background: @login-bg;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* 点击区域比箭头大，贴在左侧，压在标题上面 */
+.back {
+  position: relative;
+  z-index: 1;
+  width: 88rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 两条边转成向左的尖角，不额外引图标 */
+.chevron {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 8rpx;
+  border-left: 4rpx solid @phone-label;
+  border-bottom: 4rpx solid @phone-label;
+  transform: rotate(45deg);
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: @login-ink;
+  font-size: 34rpx;
+  font-weight: 600;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pressed {
+  opacity: 0.55;
+}

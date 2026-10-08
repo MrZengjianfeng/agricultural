@@ -1,0 +1,4 @@
+<!-- 返回微信登录。文字按钮，没有底色 -->
+<view class="link" bindtap="onTap" hover-class="pressed" hover-stay-time="80">
+  <text class="label">{{label}}</text>
+</view>

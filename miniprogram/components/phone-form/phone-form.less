@@ -1,0 +1,83 @@
+@import '../../styles/theme.less';
+
+.card {
+  margin: 64rpx 48rpx 0;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 28rpx rgba(70, 55, 20, 0.05);
+}
+
+.row {
+  height: 128rpx;
+  padding: 0 24rpx 0 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+/* 两行共用列宽，「验证码」比「+86」长，竖线仍对齐 */
+.label {
+  width: 112rpx;
+  flex: none;
+  color: @phone-label;
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.vbar {
+  width: 2rpx;
+  height: 40rpx;
+  margin-right: 28rpx;
+  background: @phone-line;
+  flex: none;
+}
+
+.field-wrap {
+  flex: 1;
+  min-width: 0;
+  height: 80rpx;
+}
+
+.field {
+  width: 100%;
+  height: 80rpx;
+  color: #333333;
+  font-size: 32rpx;
+}
+
+.ph {
+  color: @phone-placeholder;
+  font-size: 32rpx;
+}
+
+.line {
+  height: 2rpx;
+  margin: 0 28rpx;
+  background: @phone-line;
+}
+
+.send {
+  min-width: 176rpx;
+  height: 68rpx;
+  margin-left: 12rpx;
+  padding: 0 22rpx;
+  box-sizing: border-box;
+  border-radius: 34rpx;
+  background: @login-green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.send-text {
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.pressed {
+  opacity: 0.88;
+}
