@@ -1,0 +1,17 @@
+<!-- 底部四个入口。current 与 item.key 相同时高亮，购物车显示件数角标 -->
+<view class="tabbar">
+  <view
+    class="tab {{current === item.key ? 'active' : ''}}"
+    wx:for="{{tabs}}"
+    wx:key="key"
+    data-key="{{item.key}}"
+    bindtap="onTap"
+  >
+    <view class="icon-wrap">
+      <view class="icon icon-{{item.icon}}"></view>
+      <!-- 仅购物车且件数大于 0 时显示，超过 99 显示 99+ -->
+      <view wx:if="{{item.key === 'cart' && cartCount > 0}}" class="badge">{{cartCount > 99 ? '99+' : cartCount}}</view>
+    </view>
+    <text class="label">{{item.label}}</text>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<!-- 区块标题：左侧绿条和标题，右侧 extra 插槽放倒计时或查看全部 -->
+<view class="header">
+  <view class="left">
+    <view class="bar"></view>
+    <text class="title">{{title}}</text>
+  </view>
+  <view class="extra">
+    <slot name="extra"></slot>
+  </view>
+</view>

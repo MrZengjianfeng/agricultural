@@ -1,0 +1,16 @@
+<!-- 分类八宫格，每项是圆形图标加名称 -->
+<view class="grid">
+  <view
+    class="item"
+    wx:for="{{categories}}"
+    wx:key="id"
+    data-index="{{index}}"
+    bindtap="onTap"
+    hover-class="pressed"
+  >
+    <view class="circle">
+      <image class="photo" src="{{item.image}}" mode="aspectFill" />
+    </view>
+    <text class="label">{{item.name}}</text>
+  </view>
+</view>

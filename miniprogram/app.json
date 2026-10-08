@@ -1,11 +1,16 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/mine/mine",
     "pages/logs/logs"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "backgroundColor": "#F7F4EC",
+    "backgroundTextStyle": "dark"
   },
   "style": "v2",
   "rendererOptions": {

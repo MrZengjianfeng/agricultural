@@ -1,0 +1,35 @@
+<!-- 商品卡片。layout 为 fresh 时上图下文，否则左图右文 -->
+<view class="card card-{{layout}}" bindtap="onTap" hover-class="pressed">
+  <!-- 今日鲜摘：图片、可选角标、名称、现价和划线价 -->
+  <block wx:if="{{layout === 'fresh'}}">
+    <view class="fresh-cover">
+      <image class="fresh-photo" src="{{item.image}}" mode="aspectFill" lazy-load />
+      <view wx:if="{{item.badge}}" class="badge">{{item.badge}}</view>
+    </view>
+    <view class="fresh-body">
+      <text class="fresh-name">{{item.name}}</text>
+      <view class="price-row">
+        <text class="yen">¥</text>
+        <text class="price">{{item.price}}</text>
+        <text wx:if="{{item.originPrice}}" class="origin-price">¥{{item.originPrice}}</text>
+      </view>
+    </view>
+  </block>
+  <!-- 农场直发：产地标签、名称、价格；加号单独触发 add，不冒泡到卡片点击 -->
+  <block wx:else>
+    <view class="farm-cover">
+      <image class="farm-photo" src="{{item.image}}" mode="aspectFill" lazy-load />
+      <text wx:if="{{item.origin}}" class="origin-tag">{{item.origin}}</text>
+    </view>
+    <view class="farm-body">
+      <text class="farm-name">{{item.name}}</text>
+      <view class="farm-bottom">
+        <view class="price-row">
+          <text class="yen">¥</text>
+          <text class="price">{{item.price}}</text>
+        </view>
+        <view class="plus" catchtap="onAdd">+</view>
+      </view>
+    </view>
+  </block>
+</view>

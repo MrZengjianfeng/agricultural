@@ -1,0 +1,11 @@
+<!-- 圆角搜索框，键盘确认时把输入内容通过 search 事件抛出 -->
+<view class="search">
+  <view class="icon icon-search"></view>
+  <input
+    class="input"
+    placeholder="{{placeholder}}"
+    placeholder-class="ph"
+    confirm-type="search"
+    bindconfirm="onConfirm"
+  />
+</view>

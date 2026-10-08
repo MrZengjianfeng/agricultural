@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tab-page": "/components/tab-page/tab-page"
+  },
+  "navigationStyle": "custom",
+  "disableScroll": true,
+  "backgroundColor": "#F7F4EC"
+}

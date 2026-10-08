@@ -1,0 +1,17 @@
+<!-- 农场直发区块 -->
+<view class="section">
+  <!-- 区块标题，右侧插槽是「查看全部」 -->
+  <section-header title="{{title}}">
+    <view slot="extra" class="more" bindtap="onMore" hover-class="pressed">
+      <text>查看全部</text>
+      <text class="arrow">></text>
+    </view>
+  </section-header>
+  <!-- 两列商品网格 -->
+  <view class="grid">
+    <view class="cell" wx:for="{{goods}}" wx:key="id">
+      <!-- 单张农场卡片：点击卡片触发 select，点击加号触发 add -->
+      <goods-card layout="farm" item="{{item}}" bind:select="onSelect" bind:add="onAdd" />
+    </view>
+  </view>
+</view>

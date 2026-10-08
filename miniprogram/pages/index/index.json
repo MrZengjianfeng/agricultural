@@ -1,5 +1,14 @@
 {
   "usingComponents": {
-    "navigation-bar": "/components/navigation-bar/navigation-bar"
-  }
+    "home-navbar": "/components/home-navbar/home-navbar",
+    "search-bar": "/components/search-bar/search-bar",
+    "promo-banner": "/components/promo-banner/promo-banner",
+    "category-grid": "/components/category-grid/category-grid",
+    "fresh-pick": "/components/fresh-pick/fresh-pick",
+    "farm-direct": "/components/farm-direct/farm-direct",
+    "app-tab-bar": "/components/app-tab-bar/app-tab-bar"
+  },
+  "navigationStyle": "custom",
+  "disableScroll": true,
+  "backgroundColor": "#F7F4EC"
 }

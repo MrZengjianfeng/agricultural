@@ -1,28 +1,21 @@
-<!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
-    </view>
-  </view>
-</scroll-view>
+<!-- 首页：顶栏和搜索固定，中间区域滚动，底部导航固定 -->
+<view class="page">
+  <!-- 自定义导航：左侧配送地址，中间品牌名，右侧留给微信胶囊 -->
+  <home-navbar title="田野鲜生" location="{{location}}" bind:locationtap="onLocationTap" />
+  <!-- 搜索框：键盘点搜索后交给 onSearch -->
+  <search-bar placeholder="搜索新鲜果蔬、土鸡蛋..." bind:search="onSearch" />
+  <scroll-view class="body" scroll-y enhanced show-scrollbar="{{false}}">
+    <!-- 当季直供轮播，点击一帧触发 onBanner -->
+    <promo-banner banners="{{banners}}" bind:action="onBanner" />
+    <!-- 八宫格分类，点击后进入分类页 -->
+    <category-grid categories="{{categories}}" bind:select="onCategory" />
+    <!-- 今日鲜摘：倒计时和横向商品卡片 -->
+    <fresh-pick goods="{{freshGoods}}" seconds="{{flashSeconds}}" bind:select="onGoods" />
+    <!-- 农场直发：双列商品，支持查看全部和加购 -->
+    <farm-direct goods="{{farmGoods}}" bind:more="onMoreFarm" bind:select="onGoods" bind:add="onAdd" />
+    <!-- 底部留白，避免最后一行贴住导航 -->
+    <view class="bottom-space"></view>
+  </scroll-view>
+  <!-- 底部导航，当前页为首页，角标显示购物车件数 -->
+  <app-tab-bar current="home" cart-count="{{cartCount}}" />
+</view>

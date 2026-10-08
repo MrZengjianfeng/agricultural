@@ -1,0 +1,158 @@
+@import '../../styles/theme.less';
+
+.card {
+  background: @card;
+  border-radius: @radius;
+  overflow: hidden;
+  box-shadow: @shadow;
+  box-sizing: border-box;
+}
+
+.pressed {
+  opacity: 0.92;
+}
+
+.fresh-cover {
+  position: relative;
+  height: 148rpx;
+}
+
+.fresh-photo {
+  width: 100%;
+  height: 148rpx;
+}
+
+.badge {
+  position: absolute;
+  top: 12rpx;
+  left: 12rpx;
+  padding: 6rpx 10rpx;
+  border-radius: 8rpx;
+  background: @green;
+  color: #ffffff;
+  font-size: 18rpx;
+  line-height: 1;
+}
+
+.fresh-body {
+  padding: 12rpx 14rpx 16rpx;
+}
+
+.fresh-name {
+  display: block;
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  margin-top: 6rpx;
+  color: @price;
+}
+
+.yen {
+  font-size: 22rpx;
+  font-weight: 700;
+  margin-right: 2rpx;
+}
+
+.price {
+  font-size: 34rpx;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.origin-price {
+  margin-left: 8rpx;
+  font-size: 22rpx;
+  color: #C4C4C4;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.card-farm {
+  display: flex;
+  min-height: 164rpx;
+}
+
+.farm-cover {
+  position: relative;
+  width: 148rpx;
+  flex: none;
+  align-self: stretch;
+}
+
+.farm-photo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.origin-tag {
+  position: absolute;
+  top: 10rpx;
+  left: 8rpx;
+  display: inline-block;
+  max-width: 132rpx;
+  padding: 2rpx 8rpx;
+  border-radius: 8rpx;
+  background: rgba(232, 247, 236, 0.95);
+  color: @green;
+  font-size: 18rpx;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.farm-body {
+  flex: 1;
+  min-width: 0;
+  padding: 16rpx 14rpx 14rpx 14rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.farm-name {
+  font-size: 24rpx;
+  color: #333333;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.farm-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-farm .price {
+  font-size: 32rpx;
+}
+
+.plus {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: @green;
+  color: #ffffff;
+  font-size: 32rpx;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  flex: none;
+}

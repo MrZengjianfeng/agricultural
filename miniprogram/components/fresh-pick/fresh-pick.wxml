@@ -1,0 +1,19 @@
+<!-- 今日鲜摘区块 -->
+<view class="section">
+  <!-- 区块标题，右侧插槽放倒计时 -->
+  <section-header title="{{title}}">
+    <view slot="extra" class="countdown">
+      <view class="icon icon-clock"></view>
+      <text>距结束 {{remainText}}</text>
+    </view>
+  </section-header>
+  <!-- 横向滚动的鲜摘商品，版式为上图下文 -->
+  <scroll-view class="scroller" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="row">
+      <view class="slot" wx:for="{{goods}}" wx:key="id">
+        <!-- 单张鲜摘卡片，点击后把 select 转发给页面 -->
+        <goods-card layout="fresh" item="{{item}}" bind:select="onSelect" />
+      </view>
+    </view>
+  </scroll-view>
+</view>

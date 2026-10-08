@@ -1,0 +1,39 @@
+@import '../../styles/theme.less';
+@import '../../styles/icons.less';
+
+.countdown {
+  display: flex;
+  align-items: center;
+  color: @red;
+  font-size: 24rpx;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.icon-clock {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 6rpx;
+  background: @red;
+}
+
+.scroller {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.row {
+  display: inline-flex;
+  flex-direction: row;
+  padding: 0 24rpx 8rpx;
+}
+
+.slot {
+  width: 224rpx;
+  margin-right: 16rpx;
+  flex: none;
+}
+
+.slot:last-child {
+  margin-right: 0;
+}

@@ -1,0 +1,32 @@
+<!-- 促销轮播：自动播放，下方圆点跟随当前帧 -->
+<view class="wrap">
+  <swiper
+    class="swiper"
+    circular
+    autoplay
+    interval="{{4000}}"
+    duration="{{450}}"
+    bindchange="onChange"
+  >
+    <!-- 单帧：背景图、左侧遮罩，以及标题、副标题、按钮 -->
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <view class="slide" data-index="{{index}}" bindtap="onTap">
+        <image class="photo" src="{{item.image}}" mode="aspectFill" />
+        <view class="mask"></view>
+        <view class="copy">
+          <text class="headline">{{item.title}}</text>
+          <text class="sub">{{item.subtitle}}</text>
+          <view class="btn">{{item.action}}</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <!-- 指示点，current 与当前帧下标一致时高亮 -->
+  <view class="dots">
+    <view
+      wx:for="{{banners}}"
+      wx:key="id"
+      class="dot {{index === current ? 'on' : ''}}"
+    ></view>
+  </view>
+</view>

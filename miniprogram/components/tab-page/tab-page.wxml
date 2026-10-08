@@ -1,0 +1,12 @@
+<!-- 分类、购物车、我的共用的页面骨架 -->
+<view class="page">
+  <!-- 顶栏只显示标题，高度避开状态栏和胶囊 -->
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="title" style="height: {{navBarHeight}}px;">{{title}}</view>
+  </view>
+  <view class="main">
+    <text class="hint">{{hint}}</text>
+  </view>
+  <!-- 底部导航，current 决定高亮项，cartCount 显示购物车角标 -->
+  <app-tab-bar current="{{current}}" cart-count="{{cartCount}}" />
+</view>

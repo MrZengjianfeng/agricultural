@@ -1,0 +1,12 @@
+<!-- 首页顶栏：padding-top 让出状态栏，padding-right 让出微信胶囊 -->
+<view class="navbar" style="padding-top: {{statusBarHeight}}px;">
+  <view class="row" style="height: {{navBarHeight}}px; padding-right: {{capsuleGap}}px;">
+    <!-- 左侧配送地址，点击抛出 locationtap -->
+    <view class="loc" bindtap="onLocation" hover-class="pressed">
+      <view class="icon icon-pin"></view>
+      <text class="loc-text">配送至 {{location}}</text>
+    </view>
+    <!-- 居中品牌名，不响应点击，避免挡住地址 -->
+    <view class="brand">{{title}}</view>
+  </view>
+</view>

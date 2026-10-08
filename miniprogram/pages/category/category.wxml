@@ -1,0 +1,2 @@
+<!-- 分类页：标题、说明和底部导航由 tab-page 提供，hint 可被入口分类名替换 -->
+<tab-page title="分类" current="category" hint="{{hint}}" />
