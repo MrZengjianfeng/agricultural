@@ -1,2 +1,35 @@
-<!-- 购物车页占位，底部导航高亮「购物车」 -->
-<tab-page title="购物车" current="cart" hint="购物车里的新鲜好物会显示在这里" />
+<!-- 购物车：顶栏和地址固定，商品列表滚动，结算栏和底部导航固定 -->
+<view class="page">
+  <!-- 自定义顶栏：左侧管理，中间标题，右侧避开微信胶囊 -->
+  <cart-navbar managing="{{managing}}" bind:manage="onManage" />
+  <!-- 配送地址。点击后弹出可选地址 -->
+  <cart-address address="{{address}}" bind:pick="onAddress" />
+  <scroll-view class="body" scroll-y enhanced show-scrollbar="{{false}}">
+    <block wx:if="{{goods.length}}">
+      <!-- 商品行：勾选、图片、产地和数量。改数量或勾选都会重算合计 -->
+      <cart-goods
+        wx:for="{{goods}}"
+        wx:key="id"
+        item="{{item}}"
+        bind:check="onCheck"
+        bind:count="onCount"
+      />
+    </block>
+    <!-- 商品被删光后的空状态 -->
+    <view wx:else class="empty">购物车是空的</view>
+    <view class="bottom-space"></view>
+  </scroll-view>
+  <!-- 运费提示和结算栏。没有商品时不显示 -->
+  <cart-settle
+    wx:if="{{goods.length}}"
+    tip="{{shipTip}}"
+    total="{{totalText}}"
+    action-text="{{actionText}}"
+    all-checked="{{allChecked}}"
+    disabled="{{actionDisabled}}"
+    bind:toggle="onToggleAll"
+    bind:submit="onSubmit"
+  />
+  <!-- 底部导航。当前页是购物车，角标是全部商品件数 -->
+  <app-tab-bar current="cart" cart-count="{{cartCount}}" />
+</view>

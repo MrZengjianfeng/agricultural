@@ -1,4 +1,31 @@
+@import '../../styles/theme.less';
+
 page {
   height: 100%;
-  background: #F7F4EC;
+  background: @cart-bg;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: @cart-bg;
+}
+
+.body {
+  flex: 1;
+  height: 0;
+  min-height: 0;
+}
+
+.empty {
+  padding: 180rpx 48rpx 0;
+  text-align: center;
+  color: @muted;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.bottom-space {
+  height: 8rpx;
 }

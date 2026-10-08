@@ -1,0 +1,28 @@
+<!-- 商品行：勾选压在图片左上角，右侧是名称、产地、价格和数量 -->
+<view class="card">
+  <view class="cover">
+    <!-- 商品图先放，圆角裁切写在外层，避免图片盖住左上角的勾选 -->
+    <view class="photo-clip">
+      <image class="photo" src="{{item.image}}" mode="aspectFill" lazy-load />
+    </view>
+    <!-- 勾选包在普通 view 里。Skyline 下自定义组件自身绝对定位不生效，会把图片顶下去 -->
+    <view class="check">
+      <cart-check checked="{{item.checked}}" bind:change="onCheck" />
+    </view>
+  </view>
+  <view class="info">
+    <!-- 名称和产地靠上，价格和步进器贴着图片底部 -->
+    <view class="text">
+      <text class="name">{{item.name}}</text>
+      <text class="origin">{{item.origin}}</text>
+    </view>
+    <view class="foot">
+      <view class="price">
+        <text class="yen">¥</text>
+        <text class="num">{{item.price}}</text>
+      </view>
+      <!-- 数量步进器。减号最少到 1，加号最多 99 -->
+      <cart-stepper class="stepper" count="{{item.count}}" bind:change="onCount" />
+    </view>
+  </view>
+</view>

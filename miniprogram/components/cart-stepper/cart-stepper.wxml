@@ -1,0 +1,15 @@
+<!-- 数量步进器：左减、中数量、右加。减到 1 和加到 99 时不再变化 -->
+<view class="stepper">
+  <!-- 减号。件数已经是 1 时点击无效，样式仍保持可点，和设计稿一致 -->
+  <view class="hit" catchtap="onMinus" hover-class="hit-hover" aria-role="button" aria-label="减少">
+    <view class="minus"></view>
+  </view>
+  <text class="num">{{count}}</text>
+  <!-- 加号。件数到 99 后不再增加 -->
+  <view class="hit" catchtap="onPlus" hover-class="hit-hover" aria-role="button" aria-label="增加">
+    <view class="plus">
+      <view class="plus-h"></view>
+      <view class="plus-v"></view>
+    </view>
+  </view>
+</view>

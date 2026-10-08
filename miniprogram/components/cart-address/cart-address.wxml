@@ -1,0 +1,5 @@
+<!-- 配送地址条：白底圆角，左侧绿色定位钉。点击后由页面弹出地址列表 -->
+<view class="bar" bindtap="onTap" hover-class="pressed">
+  <view class="pin icon icon-pin"></view>
+  <text class="text">配送至 {{address}}</text>
+</view>

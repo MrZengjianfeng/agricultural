@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cart-check": "/components/cart-check/cart-check"
+  }
+}

@@ -1,0 +1,103 @@
+@import '../../styles/theme.less';
+
+.wrap {
+  background: @cart-bg;
+}
+
+.tip {
+  display: block;
+  padding: 4rpx 32rpx 12rpx;
+  font-size: 24rpx;
+  color: #8A8A8A;
+  line-height: 1.4;
+}
+
+/* 和商品卡片左右对齐，底下留出一点米色，看起来是浮在底栏上面 */
+.bar {
+  display: flex;
+  align-items: center;
+  margin: 0 24rpx 16rpx;
+  padding: 18rpx 20rpx 18rpx 24rpx;
+  background: #ffffff;
+  border-radius: 28rpx;
+  box-shadow: 0 8rpx 24rpx rgba(70, 55, 20, 0.05);
+  box-sizing: border-box;
+}
+
+.all {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.check {
+  flex: none;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.all-text {
+  margin-left: 12rpx;
+  font-size: 28rpx;
+  color: #222222;
+  line-height: 1;
+}
+
+.sum {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  margin-left: 28rpx;
+}
+
+.label {
+  margin-right: 12rpx;
+  font-size: 26rpx;
+  color: #8A8A8A;
+  line-height: 1;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  color: @green;
+  font-weight: 700;
+}
+
+.yen {
+  margin-right: 2rpx;
+  font-size: 28rpx;
+  line-height: 1;
+}
+
+.num {
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.btn {
+  flex: none;
+  min-width: 176rpx;
+  height: 68rpx;
+  margin-left: 12rpx;
+  padding: 0 24rpx;
+  border-radius: 16rpx;
+  background: @cart-sage;
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.btn.off {
+  background: @cart-sage-weak;
+}
+
+.pressed {
+  opacity: 0.7;
+}

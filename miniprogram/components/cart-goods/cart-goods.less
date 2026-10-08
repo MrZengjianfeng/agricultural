@@ -1,0 +1,107 @@
+@import '../../styles/theme.less';
+
+.card {
+  display: flex;
+  align-items: center;
+  margin: 0 24rpx 20rpx;
+  padding: 20rpx;
+  background: #ffffff;
+  border-radius: 28rpx;
+  box-shadow: 0 8rpx 20rpx rgba(70, 55, 20, 0.05);
+  box-sizing: border-box;
+}
+
+.cover {
+  position: relative;
+  width: 240rpx;
+  height: 240rpx;
+  flex: none;
+}
+
+/* 圆角裁在这一层。图片用固定宽高铺满，避免底部留出一条底色 */
+.photo-clip {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+
+.photo {
+  width: 240rpx;
+  height: 240rpx;
+  display: block;
+}
+
+/* 压在商品图左上角。定位必须写在 view 上，不能写在 cart-check 上 */
+.check {
+  position: absolute;
+  z-index: 2;
+  left: 8rpx;
+  top: 8rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  height: 240rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rpx 0;
+  box-sizing: border-box;
+}
+
+.name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: @text;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.origin {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #9A9A9A;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  color: @green;
+  font-weight: 700;
+}
+
+.yen {
+  margin-right: 2rpx;
+  font-size: 26rpx;
+  line-height: 1;
+}
+
+.num {
+  font-size: 36rpx;
+  line-height: 1;
+}
+
+.stepper {
+  flex: none;
+}

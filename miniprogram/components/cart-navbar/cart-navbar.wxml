@@ -1,0 +1,9 @@
+<!-- 购物车顶栏：padding-top 让出状态栏，标题相对整行居中，右侧宽度留给微信胶囊 -->
+<view class="navbar" style="padding-top: {{statusBarHeight}}px;">
+  <view class="row" style="height: {{navBarHeight}}px; padding-right: {{capsuleGap}}px;">
+    <!-- 管理入口。进入编辑后文案变成「完成」，用来删除已勾选商品 -->
+    <view class="manage" bindtap="onManage" hover-class="pressed">{{managing ? '完成' : '管理'}}</view>
+    <!-- 标题不接收点击，避免挡住左侧管理 -->
+    <view class="title">购物车</view>
+  </view>
+</view>

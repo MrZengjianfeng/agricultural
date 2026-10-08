@@ -1,0 +1,74 @@
+/* 宿主收缩到步进器本身，避免在价格行里被拉满一整行 */
+:host {
+  display: inline-block;
+  flex: none;
+}
+
+.stepper {
+  width: 176rpx;
+  height: 56rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #E4E4E4;
+  border-radius: 16rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hit {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hit-hover {
+  background: #F6F6F6;
+}
+
+.num {
+  flex: none;
+  min-width: 36rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1;
+}
+
+.minus {
+  width: 20rpx;
+  height: 3rpx;
+  border-radius: 2rpx;
+  background: #B5B5B5;
+}
+
+.plus {
+  position: relative;
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.plus-h,
+.plus-v {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 2rpx;
+  background: #B5B5B5;
+}
+
+.plus-h {
+  width: 20rpx;
+  height: 3rpx;
+}
+
+.plus-v {
+  width: 3rpx;
+  height: 20rpx;
+}

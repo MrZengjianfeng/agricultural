@@ -1,0 +1,22 @@
+<!-- 底部结算：运费提示在卡片外面，操作区是一张白底圆角卡片 -->
+<view class="wrap">
+  <!-- 免配送费提示。已满或还差多少，文案由页面算好传进来 -->
+  <text class="tip">{{tip}}</text>
+  <view class="bar">
+    <!-- 全选。点圆点或点文字都是同一次切换 -->
+    <view class="all" bindtap="onToggle" hover-class="pressed">
+      <cart-check class="check" checked="{{allChecked}}" bind:change="onToggle" />
+      <text class="all-text">全选</text>
+    </view>
+    <!-- 合计金额只统计已勾选的商品 -->
+    <view class="sum">
+      <text class="label">合计</text>
+      <view class="price">
+        <text class="yen">¥</text>
+        <text class="num">{{total}}</text>
+      </view>
+    </view>
+    <!-- 去结算或删除。没有勾选时变浅，点击仍会提示原因 -->
+    <view class="btn {{disabled ? 'off' : ''}}" catchtap="onSubmit">{{actionText}}</view>
+  </view>
+</view>

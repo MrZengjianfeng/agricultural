@@ -1,0 +1,36 @@
+@import '../../styles/theme.less';
+@import '../../styles/icons.less';
+
+.bar {
+  display: flex;
+  align-items: center;
+  height: 68rpx;
+  margin: 8rpx 24rpx 20rpx;
+  padding: 0 24rpx;
+  background: #ffffff;
+  border-radius: 28rpx;
+  box-shadow: 0 6rpx 16rpx rgba(70, 55, 20, 0.04);
+  box-sizing: border-box;
+}
+
+.pin {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+  background: @green;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pressed {
+  opacity: 0.75;
+}

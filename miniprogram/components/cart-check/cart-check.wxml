@@ -1,0 +1,11 @@
+<!-- 勾选圆：选中是绿底白勾，未选中是白底灰边。点击只抛事件，不自己改状态 -->
+<view
+  class="check {{checked ? 'on' : ''}}"
+  catchtap="onTap"
+  hover-class="pressed"
+  aria-role="button"
+  aria-label="{{checked ? '取消勾选' : '勾选'}}"
+>
+  <!-- 对勾用蒙版图标，颜色由白色背景透出来 -->
+  <view wx:if="{{checked}}" class="mark icon icon-check"></view>
+</view>

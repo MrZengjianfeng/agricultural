@@ -1,8 +1,14 @@
 {
   "usingComponents": {
-    "tab-page": "/components/tab-page/tab-page"
+    "cart-navbar": "/components/cart-navbar/cart-navbar",
+    "cart-address": "/components/cart-address/cart-address",
+    "cart-goods": "/components/cart-goods/cart-goods",
+    "cart-settle": "/components/cart-settle/cart-settle",
+    "app-tab-bar": "/components/app-tab-bar/app-tab-bar"
   },
   "navigationStyle": "custom",
   "disableScroll": true,
-  "backgroundColor": "#F7F4EC"
+  "backgroundColor": "#FFF8F0",
+  "backgroundColorTop": "#FFF8F0",
+  "backgroundColorBottom": "#FFF8F0"
 }
