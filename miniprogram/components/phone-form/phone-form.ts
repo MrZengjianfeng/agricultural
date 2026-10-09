@@ -14,12 +14,8 @@ function digits(raw: string, max: number) {
  * 组件只整理输入并抛事件，不判断手机号对不对，也不启动倒计时。
  *
  * 属性：
- * - dial 区号
  * - phone 已经输入的手机号，只含数字
- * - phonePlaceholder 手机号为空时的灰色示例
- * - codeLabel 验证码左侧文字
  * - code 已经输入的验证码
- * - codePlaceholder 验证码为空时的灰色示例
  * - sendLabel 右侧按钮文案，倒计时中由页面改成秒数
  *
  * 事件：
@@ -29,40 +25,21 @@ function digits(raw: string, max: number) {
  */
 Component({
   properties: {
-    /** 区号，展示在第一行左侧。 */
-    dial: {
-      type: String,
-      value: '+86',
-    },
+
     /** 手机号。页面持有，输入后原样传回来。 */
     phone: {
       type: String,
       value: '',
-    },
-    /** 手机号占位，带空格的示例号码。 */
-    phonePlaceholder: {
-      type: String,
-      value: '138 0000 6621',
-    },
-    /** 第二行左侧标签。 */
-    codeLabel: {
-      type: String,
-      value: '验证码',
     },
     /** 验证码。页面持有。 */
     code: {
       type: String,
       value: '',
     },
-    /** 验证码占位，四位示例。 */
-    codePlaceholder: {
-      type: String,
-      value: '5826',
-    },
     /** 获取验证码按钮上的文字。 */
     sendLabel: {
       type: String,
-      value: '获取验证码',
+      value: '',
     },
   },
   methods: {
@@ -78,11 +55,11 @@ Component({
     },
     /**
      * 验证码输入。
-     * 只留四位数字。
+     * 只留六位数字。
      * @param e 输入事件，detail.value 为当前文本
      */
     onCode(e: WechatMiniprogram.Input) {
-      const value = digits(e.detail.value, 4)
+      const value = digits(e.detail.value, 6)
       this.triggerEvent('codeinput', { value })
       return value
     },
@@ -90,8 +67,8 @@ Component({
      * 点击获取验证码。
      * 倒计时中也照样抛出，由页面决定要不要重新计时。
      */
-    onSend() {
-      this.triggerEvent('send')
+    handleSendCode() {
+      this.triggerEvent('handleSendCode')
     },
   },
 })

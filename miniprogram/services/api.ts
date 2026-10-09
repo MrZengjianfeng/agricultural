@@ -20,9 +20,9 @@ export const phoneLogin = (params: any) => {
 
 // 发送验证码
 // phone: 手机号
-export const sendSms = (params: any) => {
+export const fetchSendSms = (params: any) => {
   return request({
-    url: "/api/v1/sms/send",
+    url: "/api/system/sendSmsCode",
     method: "POST",
     data: params,
   });

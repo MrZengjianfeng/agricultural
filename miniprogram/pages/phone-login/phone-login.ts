@@ -5,8 +5,8 @@ import {
   loginBrand,
   loginDocs,
   loginImages,
-  phoneLogin,
 } from '../../data/login'
+import { fetchSendSms } from '../../services/api'
 
 /** 验证码倒计时的编号。离开页面时清掉，避免继续 setData。 */
 let sendTimer = 0
@@ -35,22 +35,18 @@ Component({
     brand: loginBrand,
     /** 圆形田标，复用已有小图，不再往主包加图。 */
     images: loginImages,
-    /** 这一屏的标题、占位和按钮文案。 */
-    copy: phoneLogin,
     /** 协议行文案。说明那一行这屏不展示。 */
     agreement: loginAgreement,
     /** 设计稿默认不勾选。 */
     agreed: false,
     /** 已输入的手机号，只含数字。 */
-    phone: '',
+    phone: '13479481634',
     /** 已输入的验证码。 */
     code: '',
     /** 获取验证码按钮上的文字。 */
-    sendLabel: phoneLogin.send,
+    sendLabel: '获取验证码',
     /** 剩余等待秒数。大于 0 时忽略再次点击。 */
     countdown: 0,
-    /** 这一轮是否已经点过获取验证码。 */
-    codeSent: false,
   },
   lifetimes: {
     /**
@@ -125,7 +121,7 @@ Component({
         left -= 1
         if (left <= 0) {
           stopSendTimer()
-          this.setData({ countdown: 0, sendLabel: phoneLogin.send })
+          this.setData({ countdown: 0, sendLabel: '获取验证码' })
           return
         }
         this.setData({ countdown: left, sendLabel: `${left}s` })
@@ -135,7 +131,8 @@ Component({
      * 获取验证码。
      * 手机号不满 11 位先拦住。等待中不重新计时。
      */
-    onSend() {
+    handleSendCode() {
+      debugger;
       if (this.data.countdown > 0) {
         return
       }
@@ -143,10 +140,24 @@ Component({
         wx.showToast({ title: '请输入11位手机号', icon: 'none' })
         return
       }
-      this.setData({ codeSent: true })
-      this.startTimer()
-      wx.showToast({ title: '验证码已发送', icon: 'none' })
+      // 发起验证码请求
+      this.handToSendSmsCode()
     },
+
+    // 发送验证码请求
+    handToSendSmsCode(){
+      let params ={
+        phone: this.data.phone
+      }
+      fetchSendSms(params).then((res)=>{
+        wx.showToast({ title: '验证码已发送', icon: 'none' })
+        this.startTimer()
+      }).catch(()=>{
+        // 发送失败重置倒计时
+        // stopSendTimer()
+      })
+    },
+
     /**
      * 提交登录。
      * 协议、手机号、是否获取过验证码、四位验证码，少一项就停在这一页。
@@ -159,10 +170,6 @@ Component({
       }
       if (!/^1\d{10}$/.test(this.data.phone)) {
         wx.showToast({ title: '请输入11位手机号', icon: 'none' })
-        return
-      }
-      if (!this.data.codeSent) {
-        wx.showToast({ title: '请先获取验证码', icon: 'none' })
         return
       }
       if (!/^\d{4}$/.test(this.data.code)) {

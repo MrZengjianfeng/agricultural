@@ -15,7 +15,7 @@
     send-label="{{sendLabel}}"
     bind:phoneinput="onPhoneInput"
     bind:codeinput="onCodeInput"
-    bind:send="onSend"
+    bind:handleSendCode="handleSendCode"
   />
   <!-- 登录 -->
   <phone-submit label="{{copy.submit}}" bind:login="onSubmit" />
