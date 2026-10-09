@@ -10,13 +10,6 @@
  * - login 点击按钮时触发，不带 detail
  */
 Component({
-  properties: {
-    /** 胶囊上的文案。 */
-    label: {
-      type: String,
-      value: '登录',
-    },
-  },
   methods: {
     /**
      * 点击登录。

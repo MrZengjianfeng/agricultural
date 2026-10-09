@@ -132,7 +132,6 @@ Component({
      * 手机号不满 11 位先拦住。等待中不重新计时。
      */
     handleSendCode() {
-      debugger;
       if (this.data.countdown > 0) {
         return
       }

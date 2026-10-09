@@ -6,19 +6,15 @@
   <phone-brand name="{{brand.name}}" slogan="{{copy.slogan}}" logo="{{images.logo}}" />
   <!-- 区号、手机号、验证码 -->
   <phone-form
-    dial="{{copy.dial}}"
     phone="{{phone}}"
-    phone-placeholder="{{copy.phonePlaceholder}}"
-    code-label="{{copy.codeLabel}}"
     code="{{code}}"
-    code-placeholder="{{copy.codePlaceholder}}"
     send-label="{{sendLabel}}"
     bind:phoneinput="onPhoneInput"
     bind:codeinput="onCodeInput"
     bind:handleSendCode="handleSendCode"
   />
   <!-- 登录 -->
-  <phone-submit label="{{copy.submit}}" bind:login="onSubmit" />
+  <phone-submit  bind:login="onSubmit" />
   <!-- 回到微信登录 -->
   <phone-back label="{{copy.back}}" bind:back="onBack" />
   <!-- 协议勾选。这一屏没有头像授权说明，hint 留空 -->
