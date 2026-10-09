@@ -7,7 +7,13 @@
   <!-- 日出菜地封面 -->
   <login-cover src="{{images.field}}" />
   <!-- 微信一键登录 -->
-  <login-wechat label="{{action.wechat}}" bind:login="onWechat" />
+  <login-wechat
+    label="{{action.wechat}}"
+    agreed="{{agreed}}"
+    bind:login="onWechat"
+    bind:unagreed="onNeedAgree"
+    bind:deny="onProfileDeny"
+  />
   <!-- 手机号登录 -->
   <login-phone label="{{action.phone}}" bind:login="onPhone" />
   <!-- 弹性空白。屏幕高时把协议区留在底部，矮屏时仍能跟着页面滚动 -->

@@ -3,7 +3,7 @@ import { request } from "../utils/request";
 // 微信登录
 export const wxLogin=(params:any)=>{
   return request({
-    url: "/api/user/wxLogin",
+    url: "/user/wxLogin",
     method: "POST",
     data: params,
   });

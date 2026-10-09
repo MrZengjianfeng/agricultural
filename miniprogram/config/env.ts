@@ -7,9 +7,9 @@ const { miniProgram } = wx.getAccountInfoSync()
 export const ENV_VERSION = miniProgram.envVersion
 
 const BASE_URL_MAP = {
-  develop: 'http://127.0.0.1:8081',
-  trial: 'http://127.0.0.1:8081',
-  release: 'http://127.0.0.1:8081',
+  develop: 'http://172.18.26.112:8081',
+  trial: 'http://172.18.26.112:8081',
+  release: 'http://172.18.26.112:8081',
 }
 
 export const BASE_URL = BASE_URL_MAP[ENV_VERSION] || BASE_URL_MAP.release

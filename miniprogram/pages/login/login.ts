@@ -7,7 +7,9 @@ import {
   loginDocs,
   loginImages,
 } from "../../data/login";
-import { wxLogin } from "../../services/api"
+import { wxLogin } from "../../services/api";
+import { pickToken } from "../../utils/auth";
+import { userStore } from "../../stores/user";
 
 /** 本地登录标记。channel 目前只有微信这一条完成了的路径。 */
 interface LoginUser {
@@ -36,8 +38,7 @@ function readLogin(): LoginUser | null {
  * 登录页。
  * 把田标、封面、微信按钮、手机号入口和协议区拼成设计稿那一屏。
  * 右上角胶囊是微信自己画的，页面只用 nav-layout 把内容让到胶囊下面。
- * 微信登录会先看协议有没有勾上，再向微信要 code，并在本地记一笔。
- * 换 openId 仍走 app.ts 里的 wx.login，这里不把 code 发到控制台。
+ * 微信登录会先看协议有没有勾上，再向微信要头像昵称，最后用 code 和用户信息登录。
  */
 Component({
   behaviors: [navLayout],
@@ -106,23 +107,43 @@ Component({
       return false;
     },
     /**
-     * 微信一键登录。
-     * 同意协议后向微信要临时 code，本地记下登录标记，再进入首页。
-     * code 留给以后的服务端换会话，这一步不展示给用户。
+     * 协议未勾选时由按钮抛出。
+     * 提示文案与 ensureAgreed 相同。
      */
-    onWechat() {
-      if (!this.ensureAgreed()) {
-        return;
-      }
+    onNeedAgree() {
+      this.ensureAgreed();
+    },
+    /**
+     * 用户关掉了头像昵称授权。
+     * 没有用户信息就不继续向微信要 code。
+     */
+    onProfileDeny() {
+      wx.showToast({ title: "需要授权用户信息后才能登录", icon: "none" });
+    },
+    /**
+     * 微信一键登录。
+     * 按钮已经拿到头像昵称，这里再向微信要临时 code，连同用户信息交给后端。
+     * @param e login-wechat 的 login 事件，detail.userInfo 为微信用户信息
+     */
+    onWechat(
+      e: WechatMiniprogram.CustomEvent<{
+        userInfo: WechatMiniprogram.UserInfo;
+      }>,
+    ) {
+      const userInfo = e.detail.userInfo;
       wx.showLoading({ title: "登录中", mask: true });
       wx.login({
         success: (res) => {
-          console.log('res',res)
-          let params ={ 
-            code:res.code,
+          if (!res.code) {
+            wx.hideLoading();
+            wx.showToast({ title: "微信登录失败", icon: "none" });
+            return;
           }
-          // 去登录
-          this.handleToLogin(params)
+          let params = {
+            ...userInfo,
+            code: res.code
+          }
+          this.handleToLogin(params);
         },
         fail: () => {
           wx.hideLoading();
@@ -131,16 +152,29 @@ Component({
       });
     },
 
-    // 传值给后端
-    handleToLogin(param:any){
-      wxLogin(param).then((res)=>{
-
-      }).catch(()=>{
-
-      })
-      wx.setStorageSync(LOGIN_STORAGE_KEY, '');
-      wx.hideLoading();
-      wx.reLaunch({ url: "/pages/index/index" });
+    /**
+     * 把登录 code 和用户信息交给后端。
+     * 拿到 token 才记登录标记并进入首页。
+     * @param param code 与 wx.getUserProfile 返回的 userInfo
+     */
+    handleToLogin(param: any) {
+      wxLogin(param)
+        .then((res:any) => {
+          const token = pickToken(res);
+          if (!token) {
+            wx.hideLoading();
+            wx.showToast({ title: "登录失败", icon: "none" });
+            return;
+          }
+          userStore.loginSuccess(token);
+          wx.hideLoading();
+          wx.reLaunch({ url: "/pages/index/index" });
+        })
+        .catch((err: unknown) => {
+          const message = err instanceof Error ? err.message : "";
+          wx.hideLoading();
+          wx.showToast({ title: message || "登录失败", icon: "none" });
+        });
     },
 
     /**
