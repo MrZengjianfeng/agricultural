@@ -18,6 +18,10 @@
     />
     <!-- 收货地址、我的收藏、联系客服、设置 -->
     <mine-menu items="{{menus}}" bind:select="onMenu" />
+    <!-- 退出登录。确认后清掉登录态并回到登录页 -->
+    <view class="logout" hover-class="logout-pressed" bindtap="onLogout">
+      <text class="logout-text">退出登录</text>
+    </view>
     <!-- 底部留白，避免最后一行贴住导航 -->
     <view class="bottom-space"></view>
   </scroll-view>

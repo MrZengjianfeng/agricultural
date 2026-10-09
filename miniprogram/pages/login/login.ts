@@ -7,31 +7,22 @@ import {
   loginDocs,
   loginImages,
 } from "../../data/login";
-import { wxLogin } from "../../services/api";
-import { pickToken } from "../../utils/auth";
+import { fetchWxLogin } from "../../services/api";
+import { pickToken, getToken } from "../../utils/auth";
 import { userStore } from "../../stores/user";
-
-/** 本地登录标记。channel 目前只有微信这一条完成了的路径。 */
-interface LoginUser {
-  /** 登录方式。 */
-  channel: string;
-  /** 写入时间，毫秒时间戳。 */
-  time: number;
-}
 
 /**
  * 读本地登录标记。
  * 没写过、或写坏了，都当作未登录。
  */
-function readLogin(): LoginUser | null {
-  const saved = wx.getStorageSync(LOGIN_STORAGE_KEY) as Partial<LoginUser> | "";
-  if (!saved || typeof saved !== "object" || !saved.channel) {
-    return null;
+function readLogin(): boolean {
+  const login = userStore.isLoggedIn;
+  const token = getToken();
+  // 获取token
+  if (login && token) {
+    return true;
   }
-  return {
-    channel: saved.channel,
-    time: saved.time || 0,
-  };
+  return false;
 }
 
 /**
@@ -59,8 +50,7 @@ Component({
      * 已经登录过就直接进首页，避免每次冷启动都停在这一屏。
      */
     attached() {
-      return;
-      if (!readLogin()) {
+      if (readLogin()) {
         return;
       }
       wx.reLaunch({ url: "/pages/index/index" });
@@ -125,7 +115,7 @@ Component({
      * 按钮已经拿到头像昵称，这里再向微信要临时 code，连同用户信息交给后端。
      * @param e login-wechat 的 login 事件，detail.userInfo 为微信用户信息
      */
-    onWechat(
+    handToWechatLogin(
       e: WechatMiniprogram.CustomEvent<{
         userInfo: WechatMiniprogram.UserInfo;
       }>,
@@ -141,9 +131,9 @@ Component({
           }
           let params = {
             ...userInfo,
-            code: res.code
-          }
-          this.handleToLogin(params);
+            code: res.code,
+          };
+          this.handleToFetchLogin(params);
         },
         fail: () => {
           wx.hideLoading();
@@ -157,9 +147,9 @@ Component({
      * 拿到 token 才记登录标记并进入首页。
      * @param param code 与 wx.getUserProfile 返回的 userInfo
      */
-    handleToLogin(param: any) {
-      wxLogin(param)
-        .then((res:any) => {
+    handleToFetchLogin(param: any) {
+      fetchWxLogin(param)
+        .then((res: any) => {
           const token = pickToken(res);
           if (!token) {
             wx.hideLoading();
@@ -167,6 +157,7 @@ Component({
             return;
           }
           userStore.loginSuccess(token);
+          wx.setStorageSync(LOGIN_STORAGE_KEY, res);
           wx.hideLoading();
           wx.reLaunch({ url: "/pages/index/index" });
         })

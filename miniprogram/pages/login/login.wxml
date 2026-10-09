@@ -10,7 +10,7 @@
   <login-wechat
     label="{{action.wechat}}"
     agreed="{{agreed}}"
-    bind:login="onWechat"
+    bind:login="handToWechatLogin"
     bind:unagreed="onNeedAgree"
     bind:deny="onProfileDeny"
   />
