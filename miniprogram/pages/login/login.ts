@@ -7,6 +7,7 @@ import {
   loginDocs,
   loginImages,
 } from "../../data/login";
+import { wxLogin } from "../../services/api"
 
 /** 本地登录标记。channel 目前只有微信这一条完成了的路径。 */
 interface LoginUser {
@@ -115,11 +116,13 @@ Component({
       }
       wx.showLoading({ title: "登录中", mask: true });
       wx.login({
-        success: () => {
-          const user: LoginUser = { channel: "wechat", time: Date.now() };
-          wx.setStorageSync(LOGIN_STORAGE_KEY, user);
-          wx.hideLoading();
-          wx.reLaunch({ url: "/pages/index/index" });
+        success: (res) => {
+          console.log('res',res)
+          let params ={ 
+            code:res.code,
+          }
+          // 去登录
+          this.handleToLogin(params)
         },
         fail: () => {
           wx.hideLoading();
@@ -127,6 +130,19 @@ Component({
         },
       });
     },
+
+    // 传值给后端
+    handleToLogin(param:any){
+      wxLogin(param).then((res)=>{
+
+      }).catch(()=>{
+
+      })
+      wx.setStorageSync(LOGIN_STORAGE_KEY, '');
+      wx.hideLoading();
+      wx.reLaunch({ url: "/pages/index/index" });
+    },
+
     /**
      * 进入手机号登录。
      * 协议勾选留在手机号那一屏，这里只负责打开页面。
