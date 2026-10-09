@@ -152,6 +152,7 @@ Component({
             return;
           }
           userStore.logout();
+          
           wx.removeStorageSync(LOGIN_STORAGE_KEY);
           wx.reLaunch({ url: "/pages/login/login" });
         },

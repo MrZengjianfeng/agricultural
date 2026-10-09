@@ -18,6 +18,8 @@ import { userStore } from "../../stores/user";
 function readLogin(): boolean {
   const login = userStore.isLoggedIn;
   const token = getToken();
+  console.log('login',login)
+  console.log('token',token)
   // 获取token
   if (login && token) {
     return true;
@@ -50,10 +52,10 @@ Component({
      * 已经登录过就直接进首页，避免每次冷启动都停在这一屏。
      */
     attached() {
+      // 已经登录过就直接进首页，避免每次冷启动都停在这一屏
       if (readLogin()) {
-        return;
+        wx.reLaunch({ url: "/pages/index/index" });
       }
-      wx.reLaunch({ url: "/pages/index/index" });
     },
   },
   methods: {
