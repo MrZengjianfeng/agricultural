@@ -62,6 +62,18 @@ function pickMessage(body: unknown, fallback: string): string {
   return fallback;
 }
 
+/** 请求失败时弹出 toast。先关掉 loading，避免遮罩把提示一起关掉。 */
+function showRequestError(message: string): void {
+  wx.hideLoading({
+    complete() {
+      wx.showToast({
+        title: message,
+        icon: "none",
+      });
+    },
+  });
+}
+
 interface RequestOptions {
   url: string;
   method?: WechatMiniprogram.RequestOption["method"];
@@ -92,17 +104,23 @@ export function request({ url, method = "GET", data, header = {} }: RequestOptio
 
         if (statusCode === 401 || UNAUTH_CODES.includes(bizCode)) {
           handleAuthExpired();
-          reject(new Error(pickMessage(body, "登录已失效")));
+          const message = pickMessage(body, "登录已失效");
+          showRequestError(message);
+          reject(new Error(message));
           return;
         }
 
         if (statusCode < 200 || statusCode >= 300) {
-          reject(new Error(pickMessage(body, "请求失败")));
+          const message = pickMessage(body, "请求失败");
+          showRequestError(message);
+          reject(new Error(message));
           return;
         }
 
         if (!Number.isNaN(bizCode) && bizCode !== SUCCESS_CODE) {
-          reject(new Error(pickMessage(body, "请求失败")));
+          const message = pickMessage(body, "请求失败");
+          showRequestError(message);
+          reject(new Error(message));
           return;
         }
 
@@ -114,7 +132,9 @@ export function request({ url, method = "GET", data, header = {} }: RequestOptio
       },
       fail(err) {
         console.log("[request] fail", { method, url: fullUrl, err });
-        reject(new Error(err.errMsg || "网络异常"));
+        const message = "网络异常";
+        showRequestError(message);
+        reject(new Error(err.errMsg || message));
       },
     });
   });

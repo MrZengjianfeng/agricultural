@@ -1,15 +1,17 @@
 import {
-  LOGIN_STORAGE_KEY,
   PHONE_CODE_SECONDS,
   loginAgreement,
   loginBrand,
   loginDocs,
   loginImages,
-} from '../../data/login'
-import { fetchSendSms } from '../../services/api'
+  LOGIN_STORAGE_KEY,
+} from "../../data/login";
+import { fetchSendSms, fetchPhoneLogin } from "../../services/api";
+import { userStore } from "../../stores/user";
+import { pickToken } from "../../utils/auth";
 
 /** 验证码倒计时的编号。离开页面时清掉，避免继续 setData。 */
-let sendTimer = 0
+let sendTimer = 0;
 
 /**
  * 停掉获取验证码的倒计时。
@@ -17,10 +19,10 @@ let sendTimer = 0
  */
 function stopSendTimer() {
   if (!sendTimer) {
-    return
+    return;
   }
-  clearInterval(sendTimer)
-  sendTimer = 0
+  clearInterval(sendTimer);
+  sendTimer = 0;
 }
 
 /**
@@ -40,11 +42,11 @@ Component({
     /** 设计稿默认不勾选。 */
     agreed: false,
     /** 已输入的手机号，只含数字。 */
-    phone: '13479481634',
+    phone: "13479481634",
     /** 已输入的验证码。 */
-    code: '',
+    code: "",
     /** 获取验证码按钮上的文字。 */
-    sendLabel: '获取验证码',
+    sendLabel: "获取验证码",
     /** 剩余等待秒数。大于 0 时忽略再次点击。 */
     countdown: 0,
   },
@@ -53,7 +55,7 @@ Component({
      * 离开页面时停掉倒计时。
      */
     detached() {
-      stopSendTimer()
+      stopSendTimer();
     },
   },
   methods: {
@@ -63,36 +65,38 @@ Component({
      */
     onBack() {
       if (getCurrentPages().length > 1) {
-        wx.navigateBack()
-        return
+        wx.navigateBack();
+        return;
       }
-      wx.redirectTo({ url: '/pages/login/login' })
+      wx.redirectTo({ url: "/pages/login/login" });
     },
     /**
      * 点击勾选圆或「我已阅读并同意」。
      * 在已勾和未勾之间切换。
      */
     onToggleAgree() {
-      this.setData({ agreed: !this.data.agreed })
+      this.setData({ agreed: !this.data.agreed });
     },
     /**
      * 打开用户协议或隐私政策。
      * 只展示说明，不代替勾选。
      * @param e login-agreement 的 open 事件
      */
-    onOpenDoc(e: WechatMiniprogram.CustomEvent<{ key: 'agreement' | 'privacy' }>) {
-      const key = e.detail.key
-      const doc = loginDocs[key]
+    onOpenDoc(
+      e: WechatMiniprogram.CustomEvent<{ key: "agreement" | "privacy" }>,
+    ) {
+      const key = e.detail.key;
+      const doc = loginDocs[key];
       if (!doc) {
-        return
+        return;
       }
       wx.showModal({
         title: doc.title,
         content: doc.content,
         showCancel: false,
-        confirmText: '知道了',
-        confirmColor: '#63905F',
-      })
+        confirmText: "知道了",
+        confirmColor: "#63905F",
+      });
     },
     /**
      * 记下手机号。
@@ -100,61 +104,58 @@ Component({
      * @param e phone-form 的 phoneinput 事件
      */
     onPhoneInput(e: WechatMiniprogram.CustomEvent<{ value: string }>) {
-      this.setData({ phone: e.detail.value })
+      this.setData({ phone: e.detail.value });
     },
     /**
      * 记下验证码。
      * @param e phone-form 的 codeinput 事件
      */
     onCodeInput(e: WechatMiniprogram.CustomEvent<{ value: string }>) {
-      this.setData({ code: e.detail.value })
+      this.setData({ code: e.detail.value });
     },
     /**
      * 开始或继续倒计时。
      * 秒数放在闭包里，不跟 setData 的异步抢。
      */
     startTimer() {
-      stopSendTimer()
-      let left = PHONE_CODE_SECONDS
-      this.setData({ countdown: left, sendLabel: `${left}s` })
+      stopSendTimer();
+      let left = PHONE_CODE_SECONDS;
+      this.setData({ countdown: left, sendLabel: `${left}s` });
       sendTimer = setInterval(() => {
-        left -= 1
+        left -= 1;
         if (left <= 0) {
-          stopSendTimer()
-          this.setData({ countdown: 0, sendLabel: '获取验证码' })
-          return
+          stopSendTimer();
+          this.setData({ countdown: 0, sendLabel: "获取验证码" });
+          return;
         }
-        this.setData({ countdown: left, sendLabel: `${left}s` })
-      }, 1000)
+        this.setData({ countdown: left, sendLabel: `${left}s` });
+      }, 1000);
     },
     /**
      * 获取验证码。
-     * 手机号不满 11 位先拦住。等待中不重新计时。
+     * 手机号格式不对先拦住。等待中不重新计时。
      */
     handleSendCode() {
       if (this.data.countdown > 0) {
-        return
+        return;
       }
-      if (!/^1\d{10}$/.test(this.data.phone)) {
-        wx.showToast({ title: '请输入11位手机号', icon: 'none' })
-        return
+      if (!/^1[3-9]\d{9}$/.test(this.data.phone)) {
+        wx.showToast({ title: "请输入正确的手机号", icon: "none" });
+        return;
       }
       // 发起验证码请求
-      this.handToSendSmsCode()
+      this.handToSendSmsCode();
     },
 
     // 发送验证码请求
-    handToSendSmsCode(){
-      let params ={
-        phone: this.data.phone
-      }
-      fetchSendSms(params).then((res)=>{
-        wx.showToast({ title: '验证码已发送', icon: 'none' })
-        this.startTimer()
-      }).catch(()=>{
-        // 发送失败重置倒计时
-        // stopSendTimer()
-      })
+    handToSendSmsCode() {
+      let params = {
+        phone: this.data.phone,
+      };
+      fetchSendSms(params).then(() => {
+        wx.showToast({ title: "验证码已发送", icon: "none" });
+        this.startTimer();
+      });
     },
 
     /**
@@ -164,19 +165,48 @@ Component({
      */
     onSubmit() {
       if (!this.data.agreed) {
-        wx.showToast({ title: '请先阅读并同意协议', icon: 'none' })
-        return
+        wx.showToast({ title: "请先阅读并同意协议", icon: "none" });
+        return;
       }
-      if (!/^1\d{10}$/.test(this.data.phone)) {
-        wx.showToast({ title: '请输入11位手机号', icon: 'none' })
-        return
+      // 验证手机号
+      if (!/^1[3-9]\d{9}$/.test(this.data.phone)) {
+        wx.showToast({ title: "请输入正确的手机号", icon: "none" });
+        return;
       }
-      if (!/^\d{4}$/.test(this.data.code)) {
-        wx.showToast({ title: '请输入4位验证码', icon: 'none' })
-        return
+      if (!/^\d{6}$/.test(this.data.code)) {
+        wx.showToast({ title: "请输入6位验证码", icon: "none" });
+        return;
       }
-      wx.setStorageSync(LOGIN_STORAGE_KEY, { channel: 'phone', time: Date.now() })
-      wx.reLaunch({ url: '/pages/index/index' })
+
+      // 登录请求
+      this.handleFetchLogin();
+    },
+    // 登录请求
+    handleFetchLogin() {
+      // 加载
+      wx.showLoading({ title: "登录中", mask: true });
+      // 请求
+      fetchPhoneLogin({
+        phone: this.data.phone,
+        loginType: 2, // 验证码登录
+        captcha: this.data.code,
+      })
+        .then((res) => {
+          const token = pickToken(res);
+          if (!token) {
+            wx.hideLoading();
+            wx.showToast({ title: "登录失败", icon: "none" });
+            return;
+          }
+          userStore.loginSuccess(token);
+          wx.setStorageSync(LOGIN_STORAGE_KEY, res);
+          // 页面跳转
+          wx.reLaunch({ url: "/pages/index/index" });
+        })
+        .catch(() => {
+          // 结束加载
+          wx.hideLoading();
+        });
     },
   },
-})
+});

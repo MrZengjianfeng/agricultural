@@ -163,10 +163,8 @@ Component({
           wx.hideLoading();
           wx.reLaunch({ url: "/pages/index/index" });
         })
-        .catch((err: unknown) => {
-          const message = err instanceof Error ? err.message : "";
+        .catch(() => {
           wx.hideLoading();
-          wx.showToast({ title: message || "登录失败", icon: "none" });
         });
     },
 

@@ -29,7 +29,7 @@
       <input
         class="field"
         type="digit"
-        maxlength="4"
+        maxlength="6"
         value="{{code}}"
         placeholder="请输入验证码"
         placeholder-class="ph"

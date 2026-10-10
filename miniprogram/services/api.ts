@@ -10,7 +10,7 @@ export const fetchWxLogin = (params: any) => {
 };
 
 // 手机号登录
-export const phoneLogin = (params: any) => {
+export const fetchPhoneLogin = (params: any) => {
   return request({
     url: "/api/user/phoneLogin",
     method: "POST",
